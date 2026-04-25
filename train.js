@@ -16,9 +16,9 @@ function countChar(char, text) {
 }
 
 // Misollar:
-console.log(countChar('a', 'Salom dunyo')); // 1
-console.log(countChar('o', 'Salom dunyo')); // 3
-console.log(countChar('z', 'Salom dunyo')); // 0
+console.log(countChar('A', 'MITASK A BAJARILDI')); // 4
+console.log(countChar('B', 'MITASK A BAJARILDI')); // 1
+console.log(countChar('S', 'MITASK A BAJARILDI')); // 1
 
 //21chi dars starting
 // console.log("Jack Ma maslahatlari");
