@@ -3,17 +3,33 @@
 
 
 // A-TASK
+function countChar(char, text) {
+    let count = 0;
+
+    for (let i = 0; i < text.length; i++) {
+        if (text[i] === char) {
+            count++;
+        }
+    }
+
+    return count;
+}
+
+// Misollar:
+console.log(countChar('a', 'Salom dunyo')); // 1
+console.log(countChar('o', 'Salom dunyo')); // 3
+console.log(countChar('z', 'Salom dunyo')); // 0
 
 //21chi dars starting
-console.log("Jack Ma maslahatlari");
-const list = [
-  "Yaxshi talaba bo'ling", // 0-20
-  "To'g'riboshliq tanlang va ko'proq xato qiling", // 20-30
-  "Uzingizga ishlashni boshlang", // 30-40
-  "Siz kuchlik bo'lgan narsalarni qiling", // 40-50
-  "Yoshlarga investitsiya qiling", // 50-60
-  "Endi dam oling", // 60-
-];
+// console.log("Jack Ma maslahatlari");
+// const list = [
+//   "Yaxshi talaba bo'ling", // 0-20
+//   "To'g'riboshliq tanlang va ko'proq xato qiling", // 20-30
+//   "Uzingizga ishlashni boshlang", // 30-40
+//   "Siz kuchlik bo'lgan narsalarni qiling", // 40-50
+//   "Yoshlarga investitsiya qiling", // 50-60
+//   "Endi dam oling", // 60-
+// ];
 
 
 
