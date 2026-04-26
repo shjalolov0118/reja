@@ -1,31 +1,66 @@
-console.log("Web Serverni boshlash");
-const express = require("express");
-const app = express();
+// // bu 24chi darsdagi xolat ISHLAMADI
+// const http = require('http');
+// const mongodb = require('mongodb');
+
+// let db;
+// const connetcionString =
+//   'mongodb+srv://LEO:leo12345678@cluster0.d4zhpe5.mongodb.net/Reja';
+
+// mongodb.connect(
+//   connetcionString,
+//     {
+//       useNewUrlParser: true,
+//       useUnifiedTopology: true,
+//     },
+//     (err, client) => {
+//       if (err) console.log("ERROR on connection MongoDB");
+//       else {
+//         console.log("MongoDB connection succeed");
+//         console.log(client);
+//         const app = require("./app");
+//         const server = http.createServer(app);
+//         let PORT = 3000; // serverno 3000chi portga listen qildig
+//         server.listen(PORT, function () {
+//           console.log(
+//             `The server is running successfully on port: ${PORT}, http://localhost:${PORT}`,
+//           );
+//         });
+//       }
+//     }
+// );
+
+
+
+// bu gpt varyanti ISHLADI
 const http = require("http");
+const { MongoClient } = require("mongodb");
+const connectionString =
+  "mongodb+srv://LEO:leo12345678@cluster0.d4zhpe5.mongodb.net/Reja";
+const client = new MongoClient(connectionString);
+let db;
+async function startServer() {
+  try {
+    await client.connect();
+    console.log("MongoDB connection succeed");
+    db = client.db(); // 👈 MUHIM
+    const app = require("./app");
+    const server = http.createServer(app);
+    let PORT = 3000;
+    server.listen(PORT, function () {
+      console.log(`Server running: http://localhost:${PORT}`);
+    });
+  } catch (err) {
+    console.log("ERROR on connection MongoDB", err);
+  }
+}
 
-// 1: Kirish code
-app.use(express.static("public"));
-app.use(express.json()); // kirib kelayotgan object datani json formatga o'giribberadi
-app.use(express.urlencoded({extended: true})); // serverga user kiritgan malumotlarni to'playdi
+// 👇 EXPORT QILAMIZ
+function getDB() {
+  return db;
+}
 
-// 2: Session code
-// 3: Views code
-app.set("views", "views");
-app.set("view engine", "ejs");
+module.exports = { startServer, getDB };
 
-// 4: Routing code
-app.post("/create-item", (req, res) => { //post malumotni o'zibilan olib keladi
-    console.log(req.body);
-    res.json({test: "success"});
-})
-
-app.get('/', function (req, res) { //get bizga malumotni o'qish uchun
-    res.render("reja");
-});
-
-const server = http.createServer(app);
-let PORT = 3000; // serverno 3000chi portga listen qildig
-server.listen(PORT, function() {
-    console.log(`The server is running successfully on port: ${PORT}, http://localhost:${PORT}`);
-});
+// serverni ishga tushur
+startServer();
 
