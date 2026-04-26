@@ -20,12 +20,12 @@ app.post("/create-item", (req, res) => { //post malumotni o'zibilan olib keladi
 })
 
 app.get('/', function (req, res) { //get bizga malumotni o'qish uchun
-    res.render("harid");
+    res.render("reja");
 });
 
 const server = http.createServer(app);
 let PORT = 3000; // serverno 3000chi portga listen qildig
 server.listen(PORT, function() {
-    console.log(`The server is running successfully on port: ${PORT}`);
+    console.log(`The server is running successfully on port: ${PORT}, http://localhost:${PORT}`);
 });
 
