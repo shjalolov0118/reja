@@ -43,7 +43,7 @@ async function startServer() {
   try {
     await client.connect();
     console.log("MongoDB connection succeed");
-    db = client.db(); // 👈 MUHIM
+    db = client.db(); // MUHIM
     const app = require("./app");
     const server = http.createServer(app);
     let PORT = 3000;
@@ -55,7 +55,7 @@ async function startServer() {
   }
 }
 
-// 👇 EXPORT QILAMIZ
+// EXPORT QILAMIZ
 function getDB() {
   return db;
 }
