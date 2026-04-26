@@ -1,24 +1,38 @@
 // console.log('Train area!');
-// B-TASK
+// npm run train
 
-
-// A-TASK
-function countChar(char, text) {
+// B-TASK starting
+function countDigits(text) {
     let count = 0;
 
     for (let i = 0; i < text.length; i++) {
-        if (text[i] === char) {
+        if (text[i] >= '0' && text[i] <= '9') {
             count++;
         }
     }
-
-    return count;
+return count;
 }
 
-// Misollar:
-console.log(countChar('A', 'MITASK A BAJARILDI')); // 4
-console.log(countChar('B', 'MITASK A BAJARILDI')); // 1
-console.log(countChar('S', 'MITASK A BAJARILDI')); // 1
+console.log(countDigits("jdshfur34y9rewh1fbd73huriej209e8jifnc")); // 10
+// B-TASK ending
+
+
+// // A-TASK starting
+// function countChar(char, text) {
+//     let count = 0;
+//     for (let i = 0; i < text.length; i++) {
+//         if (text[i] === char) {
+//             count++;
+//         }
+//     }
+//     return count;
+// }
+// // Misollar:
+// console.log(countChar('A', 'MITASK A BAJARILDI')); // 4
+// console.log(countChar('B', 'MITASK A BAJARILDI')); // 1
+// console.log(countChar('S', 'MITASK A BAJARILDI')); // 1
+// // A-TASK ending
+
 
 //21chi dars starting
 // console.log("Jack Ma maslahatlari");
@@ -30,8 +44,6 @@ console.log(countChar('S', 'MITASK A BAJARILDI')); // 1
 //   "Yoshlarga investitsiya qiling", // 50-60
 //   "Endi dam oling", // 60-
 // ];
-
-
 
 //starting
 // ASYNC function
@@ -72,6 +84,6 @@ console.log(countChar('S', 'MITASK A BAJARILDI')); // 1
 // }
 // run();
 //ending
-
-
 //21chi dars ending
+
+
