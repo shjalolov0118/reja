@@ -34,6 +34,7 @@
 // bu gpt varyanti ISHLADI
 const http = require("http");
 const { MongoClient } = require("mongodb");
+
 const connectionString =
   "mongodb+srv://LEO:leo12345678@cluster0.d4zhpe5.mongodb.net/Reja";
 const client = new MongoClient(connectionString);
