@@ -42,15 +42,21 @@
 // 3. MongoDB Compass bilan yangi Databasega ulanamiz.
 
 // 24.MongoDB databasega connection quramiz
-//     DARSIMIZ REJASI
+//      DARSIMIZ REJASI
 // 1. MongoDB External package o'rnatamiz
 // 2. Backend qurishdan oldin Databasega ulanamiz
 // 3. Databasega ulanishni tekshirish
 
 // 25. CRUD operatsiyalarini o'rganamiz.
-//     DARSIMIZ REJASI
+//      DARSIMIZ REJASI
 // 1. CRUD o'zi nima ?
 // 2. Documentationga binoan Read va Create amalini tashkillaymiz.
 // 3. EJSga qiymat ulashish va ular asosida backendda HTML qurish.
+
+// 26. Reja mini loyihamizning frontendini quramiz.
+//      DARSIMIZ REJASI
+// 1. Frontendga daxldor JavaScriptni static folderda hosil qilamiz
+// 2. AXIOS packageni o'rganamiz
+// 3. Yangi Reja hosil qilish jarayonini Rest API Requestga o'zgartirish
 
 

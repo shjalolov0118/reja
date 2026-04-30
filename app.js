@@ -78,7 +78,17 @@ app.set("view engine", "ejs");
 
 // 4: Routing code
 app.get("/", async function (req, res) {
-    console.log("user entered /");
+    // console.log("user entered /");
+    // db.collection("plans")
+    // .find()
+    // .toArray((err, data) => {
+    //     if (err) {
+    //         console.log(err);
+    //         res.end("something went wrong");
+    //     } else {
+    //         res.render("reja", { items: data });
+    //     }
+    // })
 
     try {
     const db = getDB();
@@ -91,25 +101,64 @@ app.get("/", async function (req, res) {
 });
 
 // Create item
+// 1chi urunish starting
+// app.post("/create-item", async function (req, res) {
+//     console.log("user entered /create-item");
+//     console.log(req.body);
+
+//     try {
+//         const db = getDB();
+//         const newReja = req.body.reja;
+//         if (!newReja) {
+//             return res.status(400).send("Reja kiritilmadi");
+//         }
+
+//         await db.collection("plans").insertOne({ reja: newReja });
+
+//         // res.send("successfully added");
+//         res.redirect("/");
+//     } catch (err) {
+//             console.log("ERROR on /create-item:", err.message);
+//             res.status(500).send("Something went wrong");
+//         }
+// });
+// 1chi urunish ending
+
+// 2chi urunish starting
 app.post("/create-item", async function (req, res) {
     console.log("user entered /create-item");
-    console.log(req.body);
+//   console.log(req.body);
 
     try {
         const db = getDB();
         const newReja = req.body.reja;
-        if (!newReja) {
+
+        if (!newReja || !newReja.trim()) {
             return res.status(400).send("Reja kiritilmadi");
         }
 
-        await db.collection("plans").insertOne({ reja: newReja });
+        // result ga saqlaymiz
+        const result = await db.collection("plans").insertOne({
+            reja: newReja.trim(),
+        });
 
-        res.send("successfully added");
+        // yangi object
+        const newItem = {
+                reja: newReja.trim(),
+                _id: result.insertedId.toString(),
+            };
+
+        console.log([newItem]);
+
+        res.redirect("/");
     } catch (err) {
-            console.log("ERROR on /create-item:", err.message);
-            res.status(500).send("Something went wrong");
+        console.log("ERROR on /create-item:", err.message);
+        res.status(500).send("Something went wrong");
         }
 });
+// 2chi urunish ending
+
+
 
 // Author page
 app.get("/author", function (req, res) {
