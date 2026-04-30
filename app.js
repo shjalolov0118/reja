@@ -10,6 +10,7 @@ const app = express();
 // bu gpt varyanti ISHLADI
 const { getDB } = require("./server");
 const db = getDB();
+const user = require("./database/user.json");
 
 // 1: Kirish code
 app.use(express.static("public"));
@@ -48,9 +49,9 @@ app.get('/', function (req, res) { //get bizga malumotni o'qish uchun
     });
 });
 
+app.get('/author', function (req, res) {
+    console.log("user entered /author");
+    res.render("author", { user: user });
+});
+
 module.exports = app;
-
-
-
-
-

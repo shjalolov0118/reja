@@ -50,7 +50,9 @@ const connectionString =
 const client = new MongoClient(connectionString);
 let db;
 async function startServer() {
+  console.log("Server boshlanmoqda...");
   try {
+    console.log("MongoDB ga ulanish...");
     await client.connect();
     console.log("MongoDB connection succeed");
     db = client.db(); // MUHIM
@@ -71,4 +73,7 @@ function getDB() {
 }
 
 module.exports = { startServer, getDB };
+
+// serverni ishga tushur
+startServer();
 
