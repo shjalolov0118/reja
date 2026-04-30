@@ -34,6 +34,16 @@
 // bu gpt varyanti ISHLADI
 const http = require("http");
 const { MongoClient } = require("mongodb");
+const fs = require("fs");
+
+let user;
+fs.readFile("database/user.json", "utf8", (err, data) => {
+    if(err) {
+        console.log("ERROR", err);
+    }else {
+        user = JSON.parse(data)
+    }
+});
 
 const connectionString =
   "mongodb+srv://LEO:leo12345678@cluster0.d4zhpe5.mongodb.net/Reja";
@@ -61,7 +71,4 @@ function getDB() {
 }
 
 module.exports = { startServer, getDB };
-
-// serverni ishga tushur
-startServer();
 
