@@ -1,3 +1,5 @@
+// const { response } = require("../app");
+
 console.log("FrontEnd JS ishga tushdi");
 
 function itemTemplate(item) {
@@ -39,4 +41,27 @@ document.getElementById("create-form")
         .catch((err) => {
             console.log("iltimos qaytadan xarakat qiling");
         });
+    });
+
+    document.addEventListener("click", function(e) {
+        // delete opertarsiyalari
+        // console.log(e.target);
+        if(e.target.classList.contains("delete-me")) {
+            if (confirm("Aniq o'chirmoqchimisiz ?")) {
+                axios
+                    .post("/delete-item", { id: e.target.getAttribute("data-id") })
+                    .then((response) => {
+                        console.log(response.data);
+                        e.target.parentElement.parentElement.remove();
+                    })
+                    .catch((err) => {
+                        console.log("iltimos qaytadan xarakat qiling");
+                    });
+            }
+        }
+
+        // edit opertarsiyalari
+        if(e.target.classList.contains("edit-me")) {
+            alert("siz edit tugmasini bosdingiz");
+        }
     });

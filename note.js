@@ -55,8 +55,17 @@
 
 // 26. Reja mini loyihamizning frontendini quramiz.
 //      DARSIMIZ REJASI
-// 1. Frontendga daxldor JavaScriptni static folderda hosil qilamiz
-// 2. AXIOS packageni o'rganamiz
-// 3. Yangi Reja hosil qilish jarayonini Rest API Requestga o'zgartirish
+// 1. Frontendga daxldor JavaScriptni static folderda hosil qilamiz.
+// 2. AXIOS packageni o'rganamiz.
+// 3. Yangi Reja hosil qilish jarayonini Rest API Requestga o'zgartirish.
+
+// 27. Rejalarni o'chirish (DELETE
+//      DARSIMIZ REJASI
+// 1. Tanlangan Rejalarni o'chiramiz jarayonni develop qilamiz.
+// 2. Frontend JavaScript mantig'ini davom ettiramiz
+// 3. hosil qilingan Delete Res API Requestni tekshiramiz
+
+
+
 
 

@@ -1,20 +1,75 @@
 // console.log('Train area!');
 // npm run train
 
-// B-TASK starting
-function countDigits(text) {
-    let count = 0;
-
-    for (let i = 0; i < text.length; i++) {
-        if (text[i] >= '0' && text[i] <= '9') {
-            count++;
-        }
+// C-TASK starting
+class Shop {
+    constructor(osh, somsa, manti) {
+        this.mahsulotlar = {
+            osh,
+            somsa,
+            manti,
+        };
     }
-return count;
+
+    vaqt() {
+        const date = new Date();
+        return `${date.getHours()}:${date.getMinutes()}`;
+    }
+
+    qoldiq() {
+        console.log(
+            `Hozir ${this.vaqt()} da ${this.mahsulotlar.osh} ta osh, ${this.mahsulotlar.somsa} ta somsa va ${this.mahsulotlar.manti} ta manti mavjud`,
+        );
+    }
+
+    sotish(mahsulot, soni) {
+        if (!(mahsulot in this.mahsulotlar)) {
+            console.log("Bunday mahsulot yo‘q!");
+            return;
+        }
+
+        if (this.mahsulotlar[mahsulot] < soni) {
+            console.log(`${mahsulot} yetarli emas!`);
+            return;
+        }
+
+        this.mahsulotlar[mahsulot] -= soni;
+        console.log(`${soni} ta ${mahsulot} sotildi`);
+    }
+
+    qabul(mahsulot, soni) {
+        if (!(mahsulot in this.mahsulotlar)) {
+            console.log("Bunday mahsulot yo‘q!");
+            return;
+        }
+
+        this.mahsulotlar[mahsulot] += soni;
+        console.log(`${soni} ta ${mahsulot} qabul qilindi`);
+    }
 }
 
-console.log(countDigits("jdshfur34y9rewh1fbd73huriej209e8jifnc")); // 10
-// B-TASK ending
+const shop = new Shop(7, 8, 10);
+shop.qoldiq();
+shop.sotish("osh", 5);
+shop.qabul("manti", 2);
+shop.qoldiq();
+// C-TASK ending
+
+
+// // B-TASK starting
+// function countDigits(text) {
+//     let count = 0;
+
+//     for (let i = 0; i < text.length; i++) {
+//         if (text[i] >= '0' && text[i] <= '9') {
+//             count++;
+//         }
+//     }
+// return count;
+// }
+
+// console.log(countDigits("jdshfur34y9rewh1fbd73huriej209e8jifnc")); // 10
+// // B-TASK ending
 
 
 // // A-TASK starting

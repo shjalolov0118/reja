@@ -64,6 +64,8 @@ const express = require("express");
 const app = express();
 const { getDB } = require("./server");
 const user = require("./database/user.json");
+const { ObjectId } = require("mongodb");
+// const mongodb = this.require("mongodb");
 
 // 1: Kirish code
 app.use(express.static("public"));
@@ -78,18 +80,6 @@ app.set("view engine", "ejs");
 
 // 4: Routing code
 app.get("/", async function (req, res) {
-    // console.log("user entered /");
-    // db.collection("plans")
-    // .find()
-    // .toArray((err, data) => {
-    //     if (err) {
-    //         console.log(err);
-    //         res.end("something went wrong");
-    //     } else {
-    //         res.render("reja", { items: data });
-    //     }
-    // })
-
     try {
     const db = getDB();
     const data = await db.collection("plans").find().toArray();
@@ -99,6 +89,34 @@ app.get("/", async function (req, res) {
         res.status(500).send("Something went wrong");
     }
 });
+
+app.post("/delete-item", async function (req, res) {
+    try {
+        const db = getDB();
+        const id = req.body.id;
+
+        console.log("O'chiriladigan ID:", id);
+
+        await db.collection("plans").deleteOne({
+            _id: new ObjectId(id),
+        });
+
+        res.json({ state: "success" });
+        } catch (err) {
+            console.log("ERROR on /delete-item:", err.message);
+            res.status(500).json({ state: "fail" });
+    }
+});
+
+// app.post("/delete-item", (req, res) => {
+//     const id = req.body.id;
+//     db.collection("plans")
+//     .deleteOne({_id: new ObjectId(id) },
+//         function(err, data) {
+//             res.json({ state: "success" });
+//         }
+//     );
+// });
 
 // Create item
 // 1chi urunish starting
@@ -133,9 +151,9 @@ app.post("/create-item", async function (req, res) {
         const db = getDB();
         const newReja = req.body.reja;
 
-        if (!newReja || !newReja.trim()) {
-            return res.status(400).send("Reja kiritilmadi");
-        }
+        // if (!newReja || !newReja.trim()) {
+        //     return res.status(400).send("Reja kiritilmadi");
+        // }
 
         // result ga saqlaymiz
         const result = await db.collection("plans").insertOne({
