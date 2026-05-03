@@ -1,4 +1,18 @@
-//
+
+
+
+
+
+
+
+
+// 28. Rejalarni o'zgartirish (UPDATE) starting
+//    DARSIMIZ REJASI
+// 1. Tanlangan rejalarni o'zgartirish jarayoni Editni develop qilamiz.
+// 2. Hamma rejalarni O'chiridh jarayonini develop qilamiz.
+// 3. API Requestlarni sinovdan o'tkazamiz.
+// 28. Rejalarni o'zgartirish (UPDATE) ending
+
 // 18. Express framework va bu framework orqali web server quramiz.
 //     DARSIMIZ REJASI
 // 1. Yangi Reja nomli loyihani boshlaymiz.
@@ -64,6 +78,7 @@
 // 1. Tanlangan Rejalarni o'chiramiz jarayonni develop qilamiz.
 // 2. Frontend JavaScript mantig'ini davom ettiramiz
 // 3. hosil qilingan Delete Res API Requestni tekshiramiz
+
 
 
 

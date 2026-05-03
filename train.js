@@ -1,60 +1,80 @@
 // console.log('Train area!');
 // npm run train
 
-// C-TASK starting
-class Shop {
-    constructor(osh, somsa, manti) {
-        this.mahsulotlar = {
-            osh,
-            somsa,
-            manti,
-        };
-    }
+//TASK D starting
+function MITASK_D(a, b) {
+  // bu yerda checkcontent degan function
+  // yaratdik va u 2ta qiymatni oladi
 
-    vaqt() {
-        const date = new Date();
-        return `${date.getHours()}:${date.getMinutes()}`;
-    }
+  if (a.length !== b.length) return false; // bu qator birinchi tekshiradi
+  // yani Agar ikkala textning uzunligi teng bo‘lmasa, demak ular bir xil
+  // harflardan tuzilmagan. srazi false bo'ladi
 
-    qoldiq() {
-        console.log(
-            `Hozir ${this.vaqt()} da ${this.mahsulotlar.osh} ta osh, ${this.mahsulotlar.somsa} ta somsa va ${this.mahsulotlar.manti} ta manti mavjud`,
-        );
-    }
+  // a.split("") bu MIT41 xarflarga ajratadi.
+  // .sort() bu harflarni alifbo tartibida joylaydi.
+  // join("") bu arrayni yana stringga aylantiradi.
+  const sortedA = a.split("").sort().join("");
+  const sortedB = b.split("").sort().join("");
 
-    sotish(mahsulot, soni) {
-        if (!(mahsulot in this.mahsulotlar)) {
-            console.log("Bunday mahsulot yo‘q!");
-            return;
-        }
-
-        if (this.mahsulotlar[mahsulot] < soni) {
-            console.log(`${mahsulot} yetarli emas!`);
-            return;
-        }
-
-        this.mahsulotlar[mahsulot] -= soni;
-        console.log(`${soni} ta ${mahsulot} sotildi`);
-    }
-
-    qabul(mahsulot, soni) {
-        if (!(mahsulot in this.mahsulotlar)) {
-            console.log("Bunday mahsulot yo‘q!");
-            return;
-        }
-
-        this.mahsulotlar[mahsulot] += soni;
-        console.log(`${soni} ta ${mahsulot} qabul qilindi`);
-    }
+  return sortedA === sortedB; // bu esa ikkala qiymatni solishtiryabti
 }
 
-const shop = new Shop(7, 8, 10);
-shop.qoldiq();
-shop.sotish("osh", 5);
-shop.qabul("manti", 2);
-shop.qoldiq();
-// C-TASK ending
+console.log(MITASK_D("MIT41", "41MIT"));
+//TASK D ending
 
+// C-TASK starting
+// class Shop {
+//     constructor(osh, somsa, manti) {
+//         this.mahsulotlar = {
+//             osh,
+//             somsa,
+//             manti,
+//         };
+//     }
+
+//     vaqt() {
+//         const date = new Date();
+//         return `${date.getHours()}:${date.getMinutes()}`;
+//     }
+
+//     qoldiq() {
+//         console.log(
+//             `Hozir ${this.vaqt()} da ${this.mahsulotlar.osh} ta osh, ${this.mahsulotlar.somsa} ta somsa va ${this.mahsulotlar.manti} ta manti mavjud`,
+//         );
+//     }
+
+//     sotish(mahsulot, soni) {
+//         if (!(mahsulot in this.mahsulotlar)) {
+//             console.log("Bunday mahsulot yo‘q!");
+//             return;
+//         }
+
+//         if (this.mahsulotlar[mahsulot] < soni) {
+//             console.log(`${mahsulot} yetarli emas!`);
+//             return;
+//         }
+
+//         this.mahsulotlar[mahsulot] -= soni;
+//         console.log(`${soni} ta ${mahsulot} sotildi`);
+//     }
+
+//     qabul(mahsulot, soni) {
+//         if (!(mahsulot in this.mahsulotlar)) {
+//             console.log("Bunday mahsulot yo‘q!");
+//             return;
+//         }
+
+//         this.mahsulotlar[mahsulot] += soni;
+//         console.log(`${soni} ta ${mahsulot} qabul qilindi`);
+//     }
+// }
+
+// const shop = new Shop(7, 8, 10);
+// shop.qoldiq();
+// shop.sotish("osh", 5);
+// shop.qabul("manti", 2);
+// shop.qoldiq();
+// C-TASK ending
 
 // // B-TASK starting
 // function countDigits(text) {
@@ -71,7 +91,6 @@ shop.qoldiq();
 // console.log(countDigits("jdshfur34y9rewh1fbd73huriej209e8jifnc")); // 10
 // // B-TASK ending
 
-
 // // A-TASK starting
 // function countChar(char, text) {
 //     let count = 0;
@@ -87,7 +106,6 @@ shop.qoldiq();
 // console.log(countChar('B', 'MITASK A BAJARILDI')); // 1
 // console.log(countChar('S', 'MITASK A BAJARILDI')); // 1
 // // A-TASK ending
-
 
 //21chi dars starting
 // console.log("Jack Ma maslahatlari");
@@ -140,5 +158,3 @@ shop.qoldiq();
 // run();
 //ending
 //21chi dars ending
-
-

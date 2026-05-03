@@ -3,7 +3,7 @@
 console.log("FrontEnd JS ishga tushdi");
 
 function itemTemplate(item) {
-    return `<li
+  return `<li
                         class="list-group-item list-group-item-info d-flex align-items-center justify-content-between"
                     >
                     <span class="item-text">${item.reja}</span>
@@ -24,44 +24,68 @@ function itemTemplate(item) {
 
 let createField = document.getElementById("creat-field");
 
-document.getElementById("create-form")
-.addEventListener("sibmit",
-    function (e) {
-        e.preventDefault();
+document.getElementById("create-form").addEventListener("sibmit", function (e) {
+  e.preventDefault();
 
-        axios
-        .post("/creat-item", { reja: createField.value })
+  axios
+    .post("/creat-item", { reja: createField.value })
+    .then((response) => {
+      document
+        .getElementById("item-list")
+        .insertAdjacentHTML("beforeend", itemTemplate(response.data));
+      createField.value = "";
+      createField.focus();
+    })
+    .catch((err) => {
+      console.log("Iltimos qaytadan xarakat qiling");
+    });
+});
+
+document.addEventListener("click", function (e) {
+  // delete opertarsiyalari
+  if (e.target.classList.contains("delete-me")) {
+    if (confirm("Aniq o'chirmoqchimisiz ?")) {
+      axios
+        .post("/delete-item", { id: e.target.getAttribute("data-id") })
         .then((response) => {
-            document
-            .getElementById("item-list")
-            .insertAdjacentHTML("beforeend", itemTemplate(response.data));
-            createField.value = "";
-            createField.focus();
+          console.log(response.data);
+          e.target.parentElement.parentElement.remove();
         })
         .catch((err) => {
-            console.log("iltimos qaytadan xarakat qiling");
+          console.log("Iltimos qaytadan xarakat qiling!");
         });
-    });
+    }
+  }
 
-    document.addEventListener("click", function(e) {
-        // delete opertarsiyalari
-        // console.log(e.target);
-        if(e.target.classList.contains("delete-me")) {
-            if (confirm("Aniq o'chirmoqchimisiz ?")) {
-                axios
-                    .post("/delete-item", { id: e.target.getAttribute("data-id") })
-                    .then((response) => {
-                        console.log(response.data);
-                        e.target.parentElement.parentElement.remove();
-                    })
-                    .catch((err) => {
-                        console.log("iltimos qaytadan xarakat qiling");
-                    });
-            }
-        }
+  // edit opertarsiyalari
+  if (e.target.classList.contains("edit-me")) {
+    let userInput = prompt(
+      "O'zgartirish kiriting",
+      e.target.parentElement.parentElement.querySelector(".item-text")
+        .innerHTML,
+    );
+    if (userInput) {
+      axios
+        .post("/edit-item", {
+          id: e.target.getAttribute("data-id"),
+          new_input: userInput,
+        })
+        .then((response) => {
+          console.log(response.data);
+          e.target.parentElement.parentElement.querySelector(
+            ".item-text",
+          ).innerHTML = userInput;
+        })
+        .catch((err) => {
+          console.log("Iltimos qaytadan xarakat qiling!");
+        });
+    }
+  }
+});
 
-        // edit opertarsiyalari
-        if(e.target.classList.contains("edit-me")) {
-            alert("siz edit tugmasini bosdingiz");
-        }
-    });
+document.getElementById("clean--all").addEventListener("click", function () {
+  axios.post("/delete-all", { delete_all: true }).then((response) => {
+    alert(response.data.state);
+    document.location.reload();
+  });
+});
